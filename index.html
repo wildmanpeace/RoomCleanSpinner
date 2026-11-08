@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Room Clean Spinner</title>
+    <meta name="description" content="Spin the wheel to pick which room the family cleans next!" />
+    <meta name="theme-color" content="#5b3cc4" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  </head>
+  <body>
+    <div class="bubbles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+
+    <header class="top">
+      <h1><span class="sparkle" aria-hidden="true">🧹</span> Room Clean <em>Spinner</em></h1>
+      <button id="mute" class="icon-btn" type="button" aria-pressed="false" aria-label="Mute sounds">🔊</button>
+    </header>
+
+    <main class="stage">
+      <p id="status" class="status" aria-live="polite"></p>
+
+      <div class="wheel-wrap" id="wheel-wrap">
+        <div class="pointer" id="pointer" aria-hidden="true"></div>
+        <canvas id="wheel" role="img" aria-label="Spinner wheel"></canvas>
+        <div class="hub" aria-hidden="true">🧽</div>
+        <div class="done" id="done" hidden>
+          <div class="done-emoji">🌟</div>
+          <p><strong>All rooms picked!</strong><br />Great teamwork!</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="spin" class="btn btn-spin" type="button">SPIN!</button>
+        <button id="reset" class="btn btn-reset" type="button">↺ Reset</button>
+      </div>
+
+      <section class="picked" aria-labelledby="picked-title">
+        <h2 id="picked-title">Cleaning list</h2>
+        <ol id="picked-list"></ol>
+        <p id="picked-empty" class="picked-empty">Spin to pick the first room!</p>
+      </section>
+    </main>
+
+    <dialog id="result" class="card">
+      <p class="card-kicker">Let's clean…</p>
+      <div class="card-emoji" id="result-emoji"></div>
+      <p class="card-title" id="result-name"></p>
+      <form method="dialog"><button class="btn btn-spin btn-small" value="ok">Yay! 🎉</button></form>
+    </dialog>
+
+    <dialog id="confirm-reset" class="card">
+      <div class="card-emoji">↺</div>
+      <p class="card-title small">Put all the rooms back on the wheel?</p>
+      <form method="dialog" class="card-actions">
+        <button class="btn btn-reset btn-small" value="cancel">No</button>
+        <button class="btn btn-spin btn-small" value="reset">Yes, reset</button>
+      </form>
+    </dialog>
+
+    <canvas id="confetti" class="confetti" popover="manual" aria-hidden="true"></canvas>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
